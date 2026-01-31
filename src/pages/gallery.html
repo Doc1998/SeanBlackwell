@@ -1,0 +1,74 @@
+---
+layout: 'base.html'
+description: 'Meta description for the page'
+metaTitle: 'Title that shows up on google searches'
+tagTitle: 'Projects'
+preloadImg: '/images/cabinets2-1920w.webp'
+preloadCSS: '/css/projects.css'
+permalink: 'gallery/'
+eleventyNavigation:
+    key: Gallery
+    order: 300
+---
+
+<!-- Enter html code below -->
+
+<!-- ============================================ -->
+<!--                    LANDING                   -->
+<!-- ============================================ -->
+
+<section id="int-hero">
+  <h1 id="home-h">Some of My Work</h1>
+  {% image './src/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+
+</section>
+
+<!-- ============================================ -->
+<!--                   Gallery                    -->
+<!-- ============================================ -->
+
+<section id="gallery">
+  <div class="cs-container">
+    <span class="cs-topper">Portfolio</span>
+    <h2 class="cs-title">A Glimpse Into My Work</h2>
+    <div class="cs-image-group">
+      <!-- Row 1-->
+      <div class="cs-row cs-row-1">
+        {% image './src/assets/images/gun.jpg', 'airsoft photo', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/wedding-2.webp', 'happy couple', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/weddiing-3.webp', 'wedding couple photo', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
+      </div>
+      <!-- Row 2 -->
+      <div class="cs-row cs-row-2">
+        {% image './src/assets/images/speaker.jpg', 'event speaker', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/guy-pointing.jpg', 'wine', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/coffee.webp', 'coffee', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
+      </div>
+      <!-- Row 3 -->
+      <div class="cs-row cs-row-3">
+        {% image './src/assets/images/guy.webp', 'conference photography', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/general-2.webp', 'creative shot', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/general-3.webp', 'speaker', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
+      </div>
+    </div>
+    <a href="/projects" class="button-solid">View Full Gallery</a>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--             Final Call to Action             -->
+<!-- ============================================ -->
+
+<section id="cta">
+  <div class="container">
+    <h2 class="title">
+      Let’s Create Something <br/>
+      Beautiful Together
+    </h2>
+    <p>
+      Ready to capture your story? Book a session with Sean Blackwell Photography today and bring your vision to life through stunning imagery.
+    </p>
+    <a href="/contact" class="button-solid">Book a Session</a>
+  </div>
+  {% image './src/assets/images/bow-arrow.webp', 'bow-arrow', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+</section>

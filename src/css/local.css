@@ -737,3 +737,44 @@
     display: none;
   }
 }
+.review-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start; /* Aligns them at the top so the different heights look natural */
+  padding: 40px 10px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.review-card-img {
+  /* This is the key: it sets a firm base size that isn't too small or too big */
+  width: 310px; 
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  border: 1px solid #2a2a2a; /* Sharpens the edges of the dark screenshots */
+  transition: transform 0.2s ease-in-out;
+}
+
+.review-card-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* On tablet/small laptops, keep them side-by-side but allow scaling */
+@media (max-width: 768px) {
+  .review-card-img {
+    width: 45%; 
+    min-width: 280px;
+  }
+}
+
+/* On mobile, make them large enough to read the text clearly */
+@media (max-width: 480px) {
+  .review-card-img {
+    width: 100%;
+    max-width: 340px;
+  }
+}
