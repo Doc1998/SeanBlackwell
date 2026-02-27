@@ -1,0 +1,1086 @@
+---
+layout: 'base.html'
+description: 'Check out some reviews from some of our happy customers'
+metaTitle: 'Reviews'
+tagTitle: 'Reviews'
+preloadImg: '/images/cabinets2-1920w.webp'
+preloadCSS: '/css/reviews.css'
+permalink: 'wedding-photography/'
+eleventyNavigation:
+    key: Wedding Photography
+    order: 150
+---
+<style>
+/* Wedding Page Specific Styles */
+.weddings-page * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+.weddings-page {
+font-family: 'Cormorant Garamond', Georgia, serif;
+color: #333;
+background-color: #fff;
+overflow-x: hidden;
+}
+
+/* Hero Section */
+.weddings-page .hero {
+position: relative;
+width: 100%;
+height: 85vh;
+overflow: hidden;
+}
+
+.weddings-page .hero-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+filter: brightness(0.7);
+}
+
+.weddings-page .hero-text {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+color: white;
+z-index: 2;
+width: 90%;
+max-width: 800px;
+}
+
+.weddings-page .hero-text h1 {
+font-size: 4.5rem;
+font-weight: 300;
+letter-spacing: 3px;
+margin-bottom: 1.5rem;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.weddings-page .hero-text p {
+font-size: 1.5rem;
+font-weight: 300;
+letter-spacing: 1px;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Portfolio Section */
+.weddings-page .portfolio-section {
+padding: 80px 5%;
+background: linear-gradient(to bottom, #fff 0%, #f9f7f5 100%);
+}
+
+.weddings-page .section-title {
+text-align: center;
+font-size: 3rem;
+font-weight: 300;
+letter-spacing: 2px;
+margin-bottom: 1rem;
+color: #2c2c2c;
+}
+
+.weddings-page .section-subtitle {
+text-align: center;
+font-size: 1.2rem;
+color: #666;
+margin-bottom: 60px;
+font-weight: 300;
+}
+
+/* Carousel Container */
+.weddings-page .carousel-container {
+background: white;
+border-radius: 12px;
+box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+padding: 40px;
+margin-bottom: 50px;
+max-width: 1200px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.weddings-page .carousel-wrapper {
+position: relative;
+overflow: hidden;
+border-radius: 8px;
+}
+
+.weddings-page .carousel {
+display: flex;
+transition: transform 0.4s ease-in-out;
+touch-action: pan-y;
+}
+
+.weddings-page .carousel-slide {
+min-width: 100%;
+height: 500px;
+position: relative;
+}
+
+.weddings-page .carousel-slide img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.weddings-page .carousel-button {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background: rgba(255, 255, 255, 0.9);
+border: none;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+cursor: pointer;
+font-size: 1.5rem;
+color: #333;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s;
+z-index: 10;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.weddings-page .carousel-button:hover {
+background: white;
+transform: translateY(-50%) scale(1.1);
+}
+
+.weddings-page .carousel-button.prev {
+left: 20px;
+}
+
+.weddings-page .carousel-button.next {
+right: 20px;
+}
+
+.weddings-page .carousel-dots {
+display: flex;
+justify-content: center;
+gap: 10px;
+margin-top: 20px;
+}
+
+.weddings-page .dot {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: #ddd;
+cursor: pointer;
+transition: all 0.3s;
+}
+
+.weddings-page .dot.active {
+background: #8b7355;
+transform: scale(1.2);
+}
+
+.weddings-page .couple-info {
+text-align: center;
+margin-top: 30px;
+}
+
+.weddings-page .couple-name {
+font-size: 2rem;
+font-weight: 400;
+letter-spacing: 1px;
+color: #2c2c2c;
+margin-bottom: 15px;
+}
+
+.weddings-page .see-more-btn {
+background: #8b7355;
+color: white;
+border: none;
+padding: 12px 35px;
+font-size: 1rem;
+font-family: 'Cormorant Garamond', Georgia, serif;
+letter-spacing: 1px;
+cursor: pointer;
+border-radius: 4px;
+transition: all 0.3s;
+}
+
+.weddings-page .see-more-btn:hover {
+background: #6f5a42;
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+}
+
+/* Modal/Popup */
+.weddings-page .modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.95);
+z-index: 1000;
+overflow-y: auto;
+padding: 80px 20px 40px;
+}
+
+.weddings-page .modal.active {
+display: block;
+}
+
+.weddings-page .modal-close {
+position: fixed;
+top: 30px;
+right: 30px;
+background: white;
+border: none;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+font-size: 1.5rem;
+cursor: pointer;
+z-index: 1001;
+transition: all 0.3s;
+}
+
+.weddings-page .modal-close:hover {
+transform: rotate(90deg);
+}
+
+.weddings-page .modal-content {
+max-width: 1000px;
+margin: 0 auto;
+}
+
+.weddings-page .modal-title {
+color: white;
+text-align: center;
+font-size: 3rem;
+font-weight: 300;
+letter-spacing: 2px;
+margin-bottom: 40px;
+}
+
+.weddings-page .modal-gallery {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 20px;
+}
+
+.weddings-page .modal-gallery img {
+width: 100%;
+height: 400px;
+object-fit: cover;
+border-radius: 8px;
+transition: transform 0.3s;
+}
+
+.weddings-page .modal-gallery img:hover {
+transform: scale(1.02);
+}
+
+/* Engagement Session CTA */
+.weddings-page .engagement-cta {
+max-width: 1200px;
+margin: 80px auto;
+position: relative;
+height: 500px;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.weddings-page .engagement-cta-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+.weddings-page .engagement-cta-overlay {
+position: absolute;
+top: 0;
+right: 0;
+width: 55%;
+height: 100%;
+background: linear-gradient(to right, rgba(139, 115, 85, 0) 0%, rgba(139, 115, 85, 0.95) 30%, rgba(139, 115, 85, 1) 50%);
+display: flex;
+align-items: center;
+justify-content: flex-end;
+padding-right: 80px;
+}
+
+.weddings-page .engagement-cta-content {
+max-width: 450px;
+color: white;
+text-align: left;
+}
+
+.weddings-page .engagement-cta-title {
+font-size: 3rem;
+font-weight: 300;
+letter-spacing: 2px;
+margin-bottom: 20px;
+}
+
+.weddings-page .engagement-cta-text {
+font-size: 1.2rem;
+line-height: 1.8;
+margin-bottom: 30px;
+opacity: 0.95;
+}
+
+.weddings-page .engagement-cta-button {
+background: white;
+color: #8b7355;
+border: none;
+padding: 16px 40px;
+font-size: 1.1rem;
+font-family: 'Cormorant Garamond', Georgia, serif;
+letter-spacing: 1px;
+cursor: pointer;
+border-radius: 4px;
+transition: all 0.3s;
+font-weight: 500;
+display: inline-block;
+text-decoration: none;
+}
+
+.weddings-page .engagement-cta-button:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Pricing Section */
+.weddings-page .pricing-section {
+padding: 80px 5%;
+background: white;
+}
+
+.weddings-page .package {
+max-width: 1200px;
+margin: 0 auto 60px;
+background: white;
+border-radius: 12px;
+box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+overflow: hidden;
+display: flex;
+flex-direction: row;
+}
+
+.weddings-page .package-image-wrapper {
+flex: 1;
+position: relative;
+min-height: 450px;
+}
+
+.weddings-page .package-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+.weddings-page .package-image-wrapper::after {
+content: '';
+position: absolute;
+right: 0;
+top: 0;
+width: 200px;
+height: 100%;
+background: linear-gradient(to right, transparent, #f9f7f5);
+}
+
+.weddings-page .package-content {
+flex: 1;
+padding: 50px;
+background: #f9f7f5;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.weddings-page .package-tier {
+font-size: 1rem;
+text-transform: uppercase;
+letter-spacing: 3px;
+color: #8b7355;
+margin-bottom: 10px;
+}
+
+.weddings-page .package-name {
+font-size: 2.5rem;
+font-weight: 400;
+letter-spacing: 1px;
+margin-bottom: 15px;
+color: #2c2c2c;
+}
+
+.weddings-page .package-price {
+font-size: 3rem;
+font-weight: 300;
+color: #8b7355;
+margin-bottom: 25px;
+}
+
+.weddings-page .package-price span {
+font-size: 1.2rem;
+color: #666;
+}
+
+.weddings-page .package-features {
+list-style: none;
+margin-bottom: 30px;
+}
+
+.weddings-page .package-features li {
+padding: 12px 0;
+border-bottom: 1px solid #e0d9d1;
+font-size: 1.1rem;
+color: #555;
+}
+
+.weddings-page .package-features li:before {
+content: '✓ ';
+color: #8b7355;
+font-weight: bold;
+margin-right: 10px;
+}
+
+.weddings-page .package-buttons {
+display: flex;
+gap: 15px;
+flex-wrap: wrap;
+}
+
+.weddings-page .select-package-btn {
+background: #8b7355;
+color: white;
+border: none;
+padding: 14px 30px;
+font-size: 1rem;
+font-family: 'Cormorant Garamond', Georgia, serif;
+letter-spacing: 1px;
+cursor: pointer;
+border-radius: 4px;
+transition: all 0.3s;
+flex: 1;
+}
+
+.weddings-page .select-package-btn:hover {
+background: #6f5a42;
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+}
+
+.weddings-page .learn-more-btn {
+background: transparent;
+color: #8b7355;
+border: 2px solid #8b7355;
+padding: 14px 30px;
+font-size: 1rem;
+font-family: 'Cormorant Garamond', Georgia, serif;
+letter-spacing: 1px;
+cursor: pointer;
+border-radius: 4px;
+transition: all 0.3s;
+}
+
+.weddings-page .learn-more-btn:hover {
+background: #8b7355;
+color: white;
+}
+
+/* Package Form Dropdown */
+.weddings-page .package-form {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease-out;
+background: #fff;
+margin-top: 0;
+}
+
+.weddings-page .package-form.active {
+max-height: 600px;
+margin-top: 30px;
+padding: 30px;
+border-radius: 8px;
+border: 2px solid #8b7355;
+}
+
+.weddings-page .form-group {
+margin-bottom: 20px;
+}
+
+.weddings-page .form-group label {
+display: block;
+margin-bottom: 8px;
+color: #333;
+font-size: 1rem;
+}
+
+.weddings-page .form-group input,
+.weddings-page .form-group textarea {
+width: 100%;
+padding: 12px;
+border: 1px solid #ddd;
+border-radius: 4px;
+font-family: 'Cormorant Garamond', Georgia, serif;
+font-size: 1rem;
+}
+
+.weddings-page .form-group textarea {
+min-height: 100px;
+resize: vertical;
+}
+
+.weddings-page .submit-btn {
+background: #8b7355;
+color: white;
+border: none;
+padding: 14px 40px;
+font-size: 1rem;
+font-family: 'Cormorant Garamond', Georgia, serif;
+letter-spacing: 1px;
+cursor: pointer;
+border-radius: 4px;
+transition: all 0.3s;
+}
+
+.weddings-page .submit-btn:hover {
+background: #6f5a42;
+}
+
+/* Contact Section */
+.weddings-page .contact-section {
+padding: 80px 5%;
+background: linear-gradient(to bottom, #f9f7f5 0%, #fff 100%);
+}
+
+.weddings-page .contact-container {
+max-width: 800px;
+margin: 0 auto;
+background: white;
+border-radius: 12px;
+box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+padding: 60px 50px;
+}
+
+.weddings-page .contact-title {
+font-size: 2.5rem;
+font-weight: 300;
+letter-spacing: 2px;
+text-align: center;
+margin-bottom: 15px;
+color: #2c2c2c;
+}
+
+.weddings-page .contact-subtitle {
+text-align: center;
+font-size: 1.1rem;
+color: #666;
+margin-bottom: 40px;
+}
+
+/* Call to Action Banner */
+.weddings-page .cta-banner {
+background: linear-gradient(135deg, #8b7355 0%, #6f5a42 100%);
+padding: 60px 5%;
+text-align: center;
+color: white;
+}
+
+.weddings-page .cta-title {
+font-size: 2.5rem;
+font-weight: 300;
+letter-spacing: 2px;
+margin-bottom: 20px;
+}
+
+.weddings-page .cta-text {
+font-size: 1.2rem;
+margin-bottom: 30px;
+opacity: 0.95;
+}
+
+.weddings-page .cta-button {
+background: white;
+color: #8b7355;
+border: none;
+padding: 16px 45px;
+font-size: 1.1rem;
+font-family: 'Cormorant Garamond', Georgia, serif;
+letter-spacing: 1px;
+cursor: pointer;
+border-radius: 4px;
+transition: all 0.3s;
+font-weight: 500;
+}
+
+.weddings-page .cta-button:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+.weddings-page .hero-text h1 {
+font-size: 2.5rem;
+}
+
+.weddings-page .hero-text p {
+font-size: 1.1rem;
+}
+
+.weddings-page .section-title {
+font-size: 2rem;
+}
+
+.weddings-page .package {
+flex-direction: column;
+}
+
+.weddings-page .package-image-wrapper {
+min-height: 300px;
+}
+
+.weddings-page .package-image-wrapper::after {
+display: none;
+}
+
+.weddings-page .package-content {
+padding: 30px;
+}
+
+.weddings-page .carousel-slide {
+height: 350px;
+}
+
+.weddings-page .carousel-container {
+padding: 25px;
+}
+
+.weddings-page .modal-title {
+font-size: 2rem;
+}
+
+.weddings-page .contact-container {
+padding: 40px 30px;
+}
+
+.weddings-page .engagement-cta {
+height: 600px;
+}
+
+.weddings-page .engagement-cta-overlay {
+width: 100%;
+background: linear-gradient(to bottom, rgba(139, 115, 85, 0) 0%, rgba(139, 115, 85, 0.95) 40%, rgba(139, 115, 85, 1) 60%);
+justify-content: center;
+align-items: flex-end;
+padding: 50px 30px;
+}
+
+.weddings-page .engagement-cta-content {
+text-align: center;
+}
+
+.weddings-page .engagement-cta-title {
+font-size: 2rem;
+}
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap');
+</style>
+
+<div class="weddings-page">
+<!-- Hero Section -->
+<section class="hero">
+<img src="/assets/images/banner-wed.jpg" alt="Wedding couple" class="hero-image">
+<div class="hero-text">
+<h1 style="color: white;">Weddings</h1>
+<p style="color: white;">Capturing your most precious moments with elegance and artistry</p>
+</div>
+</section>
+
+```
+<!-- Portfolio Section -->
+<section class="portfolio-section">
+<h2 class="section-title">Recent Celebrations</h2>
+<p class="section-subtitle">Each love story is unique, beautifully told through timeless imagery</p>
+
+<!-- Carousel 1 -->
+<div class="carousel-container">
+<div class="carousel-wrapper">
+<div class="carousel" data-carousel="1">
+<div class="carousel-slide"><img src="/assets/images/AD5.webp" alt="Donal & Aine 1"></div>
+<div class="carousel-slide"><img src="/assets/images/AD2.webp" alt="Donal & Aine 2"></div>
+<div class="carousel-slide"><img src="/assets/images/AD3.webp" alt="Donal & Aine 3"></div>
+<div class="carousel-slide"><img src="/assets/images/AD4.webp" alt="Donal & Aine 4"></div>
+<div class="carousel-slide"><img src="/assets/images/AD1.webp" alt="Donal & Aine 5"></div>
+</div>
+<button class="carousel-button prev" onclick="moveCarousel(1, -1)">‹</button>
+<button class="carousel-button next" onclick="moveCarousel(1, 1)">›</button>
+</div>
+<div class="carousel-dots" data-dots="1">
+<span class="dot active" onclick="goToSlide(1, 0)"></span>
+<span class="dot" onclick="goToSlide(1, 1)"></span>
+<span class="dot" onclick="goToSlide(1, 2)"></span>
+<span class="dot" onclick="goToSlide(1, 3)"></span>
+<span class="dot" onclick="goToSlide(1, 4)"></span>
+</div>
+<div class="couple-info">
+<h3 class="couple-name">Donal & Aine</h3>
+<button class="see-more-btn" onclick="openModal(1)">See More</button>
+</div>
+</div>
+
+<!-- Carousel 2 -->
+<div class="carousel-container">
+<div class="carousel-wrapper">
+<div class="carousel" data-carousel="2">
+<div class="carousel-slide"><img src="/assets/images/DS1.webp" alt="Timmy & Angel"></div>
+<div class="carousel-slide"><img src="/assets/images/DS2.webp" alt="Timmy & Angel 2"></div>
+<div class="carousel-slide"><img src="/assets/images/DS3.webp" alt="Timmy & Angel 3"></div>
+<div class="carousel-slide"><img src="/assets/images/DS4.webp" alt="Timmy & Angel 4"></div>
+<div class="carousel-slide"><img src="/assets/images/DS5.webp" alt="Timmy & Angel 5"></div>
+</div>
+<button class="carousel-button prev" onclick="moveCarousel(2, -1)">‹</button>
+<button class="carousel-button next" onclick="moveCarousel(2, 1)">›</button>
+</div>
+<div class="carousel-dots" data-dots="2">
+<span class="dot active" onclick="goToSlide(2, 0)"></span>
+<span class="dot" onclick="goToSlide(2, 1)"></span>
+<span class="dot" onclick="goToSlide(2, 2)"></span>
+<span class="dot" onclick="goToSlide(2, 3)"></span>
+<span class="dot" onclick="goToSlide(2, 4)"></span>
+</div>
+<div class="couple-info">
+<h3 class="couple-name">Timmy & Angel</h3>
+<button class="see-more-btn" onclick="openModal(2)">See More</button>
+</div>
+</div>
+
+<!-- Carousel 3 -->
+<div class="carousel-container">
+<div class="carousel-wrapper">
+<div class="carousel" data-carousel="3">
+<div class="carousel-slide"><img src="/assets/images/TC1.webp" alt="Oisin & Celia"></div>
+<div class="carousel-slide"><img src="/assets/images/TC2.webp" alt="Oisin & Celia 2"></div>
+<div class="carousel-slide"><img src="/assets/images/TC3.webp" alt="Oisin & Celia 3"></div>
+<div class="carousel-slide"><img src="/assets/images/TC4.webp" alt="Oisin & Celia 4"></div>
+<div class="carousel-slide"><img src="/assets/images/TC5.webp" alt="Oisin & Celia 5"></div>
+</div>
+<button class="carousel-button prev" onclick="moveCarousel(3, -1)">‹</button>
+<button class="carousel-button next" onclick="moveCarousel(3, 1)">›</button>
+</div>
+<div class="carousel-dots" data-dots="3">
+<span class="dot active" onclick="goToSlide(3, 0)"></span>
+<span class="dot" onclick="goToSlide(3, 1)"></span>
+<span class="dot" onclick="goToSlide(3, 2)"></span>
+<span class="dot" onclick="goToSlide(3, 3)"></span>
+<span class="dot" onclick="goToSlide(3, 4)"></span>
+</div>
+<div class="couple-info">
+<h3 class="couple-name">Oisin & Celia</h3>
+<button class="see-more-btn" onclick="openModal(3)">See More</button>
+</div>
+</div>
+</section>
+
+<!-- Engagement Session CTA -->
+<div class="engagement-cta">
+<img src="/assets/images/engage.webp" alt="Engagement Session" class="engagement-cta-image">
+<div class="engagement-cta-overlay">
+<div class="engagement-cta-content">
+<h2 class="engagement-cta-title" style="color: white;">Engagement Sessions</h2>
+<p class="engagement-cta-text" style="color: white;">Celebrate your love story before the big day. Capture the excitement, intimacy, and joy of this special time with a personalized engagement photography session.</p>
+<a href="/contact" class="engagement-cta-button">Book Engagement Session</a>
+</div>
+</div>
+</div>
+
+<!-- Call to Action Banner -->
+<div class="cta-banner">
+<h2 class="cta-title" style="color: white;">Ready to Preserve Your Forever?</h2>
+<p class="cta-text" style="color: white;">Let's create timeless memories together on your special day</p>
+<button class="cta-button" onclick="document.querySelector('.contact-section').scrollIntoView({behavior: 'smooth'})">Get in Touch</button>
+</div>
+
+<!-- Pricing Section -->
+<section class="pricing-section">
+<h2 class="section-title">Wedding Photography Packages</h2>
+<p class="section-subtitle">Thoughtfully designed collections to suit your celebration</p>
+
+<!-- Silver Package -->
+<div class="package">
+<div class="package-image-wrapper">
+<img src="/assets/images/AD2.webp" alt="Silver Package" class="package-image">
+</div>
+<div class="package-content">
+<div class="package-tier">Package</div>
+<h3 class="package-name">Silver</h3>
+<div class="package-price">€1,500</div>
+<ul class="package-features">
+<li>8 hours of coverage</li>
+<li>150+ edited high-resolution images</li>
+<li>Downloadable digital gallery</li>
+<li>Sneak peek within 72 hours</li>
+</ul>
+<div class="package-buttons">
+<a class="learn-more-btn" href="/contact">Get in Touch</a>
+</div>
+</div>
+</div>
+
+<!-- Gold Package -->
+<div class="package">
+<div class="package-image-wrapper">
+<img src="/assets/images/DS1.webp" alt="Gold Package" class="package-image">
+</div>
+<div class="package-content">
+<div class="package-tier">Package</div>
+<h3 class="package-name">Gold</h3>
+<div class="package-price">€1,700</div>
+<ul class="package-features">
+<li>10 hours of coverage</li>
+<li>200+ edited high-resolution images</li>
+<li>Downloadable digital gallery & premium USB</li>
+<li>Sneak peek within 48 hours</li>
+</ul>
+<div class="package-buttons">
+<a class="learn-more-btn" href="/contact">Get in Touch</a>
+</div>
+</div>
+</div>
+
+<!-- Platinum Package -->
+<div class="package">
+<div class="package-image-wrapper">
+<img src="/assets/images/TC5.webp" alt="Platinum Package" class="package-image">
+</div>
+<div class="package-content">
+<div class="package-tier">Package</div>
+<h3 class="package-name">Platinum</h3>
+<div class="package-price">€1,800</div>
+<ul class="package-features">
+<li>12 hours of coverage</li>
+<li>250+ edited high-resolution images</li>
+<li>Discount on engagement sessions</li>
+<li>Downloadable digital gallery & premium USB</li>
+<li>Sneak peek within 48 hours</li>
+</ul>
+<div class="package-buttons">
+<a class="learn-more-btn" href="/contact">Get in Touch</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+<div class="contact-container">
+<h2 class="contact-title">Let's Create Magic Together</h2>
+<p class="contact-subtitle">Have questions or need a custom quote? I'd love to hear from you.</p>
+<form name="Wedding Form" method="post" data-netlify="true">
+<div class="form-group">
+<label>Your Name *</label>
+<input type="text" required>
+</div>
+<div class="form-group">
+<label>Email *</label>
+<input type="email" required>
+</div>
+<div class="form-group">
+<label>Phone</label>
+<input type="tel">
+</div>
+<div class="form-group">
+<label>Wedding Date</label>
+<input type="date">
+</div>
+<div class="form-group">
+<label>Message *</label>
+<textarea required placeholder="Additional Details..."></textarea>
+</div>
+<button type="submit" class="submit-btn">Send Message</button>
+</form>
+</div>
+</section>
+
+<!-- Modals for each couple -->
+<div class="modal" id="modal-1">
+<button class="modal-close" onclick="closeModal(1)">×</button>
+<div class="modal-content">
+<h2 class="modal-title">Sarah & Michael</h2>
+<div class="modal-gallery">
+<img src="https://placehold.co/600x400/c9b5a0/ffffff?text=Gallery+1" alt="Gallery 1">
+<img src="https://placehold.co/600x400/c9b5a0/ffffff?text=Gallery+2" alt="Gallery 2">
+<img src="https://placehold.co/600x400/c9b5a0/ffffff?text=Gallery+3" alt="Gallery 3">
+<img src="https://placehold.co/600x400/c9b5a0/ffffff?text=Gallery+4" alt="Gallery 4">
+<img src="https://placehold.co/600x400/c9b5a0/ffffff?text=Gallery+5" alt="Gallery 5">
+<img src="https://placehold.co/600x400/c9b5a0/ffffff?text=Gallery+6" alt="Gallery 6">
+<img src="https://placehold.co/600x400/c9b5a0/ffffff?text=Gallery+7" alt="Gallery 7">
+<img src="https://placehold.co/600x400/c9b5a0/ffffff?text=Gallery+8" alt="Gallery 8">
+<img src="https://placehold.co/600x400/c9b5a0/ffffff?text=Gallery+9" alt="Gallery 9">
+</div>
+</div>
+</div>
+
+<div class="modal" id="modal-2">
+<button class="modal-close" onclick="closeModal(2)">×</button>
+<div class="modal-content">
+<h2 class="modal-title">Emma & James</h2>
+<div class="modal-gallery">
+<img src="https://placehold.co/600x400/d4c4b0/ffffff?text=Gallery+1" alt="Gallery 1">
+<img src="https://placehold.co/600x400/d4c4b0/ffffff?text=Gallery+2" alt="Gallery 2">
+<img src="https://placehold.co/600x400/d4c4b0/ffffff?text=Gallery+3" alt="Gallery 3">
+<img src="https://placehold.co/600x400/d4c4b0/ffffff?text=Gallery+4" alt="Gallery 4">
+<img src="https://placehold.co/600x400/d4c4b0/ffffff?text=Gallery+5" alt="Gallery 5">
+<img src="https://placehold.co/600x400/d4c4b0/ffffff?text=Gallery+6" alt="Gallery 6">
+<img src="https://placehold.co/600x400/d4c4b0/ffffff?text=Gallery+7" alt="Gallery 7">
+<img src="https://placehold.co/600x400/d4c4b0/ffffff?text=Gallery+8" alt="Gallery 8">
+<img src="https://placehold.co/600x400/d4c4b0/ffffff?text=Gallery+9" alt="Gallery 9">
+</div>
+</div>
+</div>
+
+<div class="modal" id="modal-3">
+<button class="modal-close" onclick="closeModal(3)">×</button>
+<div class="modal-content">
+<h2 class="modal-title">Olivia & Daniel</h2>
+<div class="modal-gallery">
+<img src="https://placehold.co/600x400/b8a693/ffffff?text=Gallery+1" alt="Gallery 1">
+<img src="https://placehold.co/600x400/b8a693/ffffff?text=Gallery+2" alt="Gallery 2">
+<img src="https://placehold.co/600x400/b8a693/ffffff?text=Gallery+3" alt="Gallery 3">
+<img src="https://placehold.co/600x400/b8a693/ffffff?text=Gallery+4" alt="Gallery 4">
+<img src="https://placehold.co/600x400/b8a693/ffffff?text=Gallery+5" alt="Gallery 5">
+<img src="https://placehold.co/600x400/b8a693/ffffff?text=Gallery+6" alt="Gallery 6">
+<img src="https://placehold.co/600x400/b8a693/ffffff?text=Gallery+7" alt="Gallery 7">
+<img src="https://placehold.co/600x400/b8a693/ffffff?text=Gallery+8" alt="Gallery 8">
+<img src="https://placehold.co/600x400/b8a693/ffffff?text=Gallery+9" alt="Gallery 9">
+</div>
+</div>
+</div>
+
+<script>
+// Carousel functionality
+const carouselStates = {
+1: { current: 0, total: 5 },
+2: { current: 0, total: 5 },
+3: { current: 0, total: 5 }
+};
+
+function moveCarousel(carouselId, direction) {
+const state = carouselStates[carouselId];
+state.current = (state.current + direction + state.total) % state.total;
+updateCarousel(carouselId);
+}
+
+function goToSlide(carouselId, index) {
+carouselStates[carouselId].current = index;
+updateCarousel(carouselId);
+}
+
+function updateCarousel(carouselId) {
+const state = carouselStates[carouselId];
+const carousel = document.querySelector(`[data-carousel="${carouselId}"]`);
+const dots = document.querySelectorAll(`[data-dots="${carouselId}"] .dot`);
+
+carousel.style.transform = `translateX(-${state.current * 100}%)`;
+
+dots.forEach((dot, index) => {
+dot.classList.toggle('active', index === state.current);
+});
+}
+
+// Touch/swipe support for carousels
+document.querySelectorAll('.weddings-page .carousel').forEach(carousel => {
+let startX = 0;
+let isDragging = false;
+
+carousel.addEventListener('touchstart', (e) => {
+startX = e.touches[0].clientX;
+isDragging = true;
+});
+
+carousel.addEventListener('touchmove', (e) => {
+if (!isDragging) return;
+});
+
+carousel.addEventListener('touchend', (e) => {
+if (!isDragging) return;
+const endX = e.changedTouches[0].clientX;
+const diff = startX - endX;
+const carouselId = parseInt(carousel.dataset.carousel);
+
+if (Math.abs(diff) > 50) {
+moveCarousel(carouselId, diff > 0 ? 1 : -1);
+}
+isDragging = false;
+});
+});
+
+// Modal functions
+let scrollPosition = 0;
+
+function openModal(modalId) {
+scrollPosition = window.pageYOffset;
+const modal = document.getElementById(`modal-${modalId}`);
+modal.classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+const modal = document.getElementById(`modal-${modalId}`);
+modal.classList.remove('active');
+document.body.style.overflow = '';
+window.scrollTo(0, scrollPosition);
+}
+
+// Close modal on background click
+document.querySelectorAll('.weddings-page .modal').forEach(modal => {
+modal.addEventListener('click', (e) => {
+if (e.target === modal) {
+const modalId = modal.id.split('-')[1];
+closeModal(modalId);
+}
+});
+});
+
+// Package form toggle
+function togglePackageForm(packageName) {
+const form = document.getElementById(`${packageName}-form`);
+const allForms = document.querySelectorAll('.weddings-page .package-form');
+
+allForms.forEach(f => {
+if (f !== form) {
+f.classList.remove('active');
+}
+});
+
+form.classList.toggle('active');
+}
+
+// Form submission handlers
+function handleSubmit(event, packageName) {
+event.preventDefault();
+alert(`Thank you for your interest in the ${packageName} package! We'll be in touch soon.`);
+event.target.reset();
+togglePackageForm(packageName.toLowerCase());
+}
+
+function handleContactSubmit(event) {
+event.preventDefault();
+alert('Thank you for reaching out! We\'ll get back to you within 24 hours.');
+event.target.reset();
+}
+</script>
+```
+
+</div>
